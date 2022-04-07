@@ -1,0 +1,16 @@
+function move(arr, target) {
+  var i = arr.length - 1
+  while(arr[i] !== undefined){
+    if(arr[i] === target){
+      arr.splice(i,1)
+      arr.push(target)
+    }
+    i--
+  }
+  return arr;
+};
+console.log(move([0, 1, 2, 0, 3, 4], 0)) 
+// [1, 2, 3, 4, 0, 0]
+
+console.log(move(['a', 'def', 'c', 'c', 'e', 'xyz'], 'c')) 
+// ['a', 'def', 'e', 'xyz', 'c', 'c']
