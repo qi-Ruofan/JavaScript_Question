@@ -1,8 +1,8 @@
 # Daily one problem
-[【01】JS的parseInt使用考察 ](src/01-parseInt.js)  
-[【02】考察JS的valueOf和toString的操作 ](src/02-valueOf-toString.js)  
-[【03】new 结果的考察 ](src/03-new.js)  
-[【04】如何判断一个对象是不是空对象？ ](src/04-judge-empty-object.js)  
+[【01】JS的parseInt使用考察 ](./src/01-parseInt.js)  
+[【02】考察JS的valueOf和toString的操作 ](./src/02-valueOf-toString.js)  
+[【03】new 结果的考察 ](/src/03-new.js)  
+[【04】如何判断一个对象是不是空对象？ ](/src/04-judge-empty-object.js)  
 [【05】JS执行过程考察 ](src/05-js-implement.js)  
 [【06】JS的参数arguments考察 ](src/06-arguments.js)  
 [【07】S的Math.max和Math.min的考察 ](src/07-math-max-min.js)  
