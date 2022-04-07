@@ -1,5 +1,5 @@
 # Daily one problem
-[【01】JS的parseInt使用考察 ](./src/01-parseInt.js)  
+[【01】JS的parseInt使用考察 ](#01_parseInt)  
 [【02】考察JS的valueOf和toString的操作 ](./src/02-valueOf-toString.js)  
 [【03】new 结果的考察 ](/src/03-new.js)  
 [【04】如何判断一个对象是不是空对象？ ](/src/04-judge-empty-object.js)  
