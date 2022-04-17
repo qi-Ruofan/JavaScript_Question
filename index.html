@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+  function throttle(fn, timeout) {
+   // TODO
+    let isFinish = true;
+    return function() {
+      if (isFinish !== true) {
+        return;
+      }
+      isFinish = false;
+      setTimeout(() => {
+        if (typeof fn === 'function') {
+          fn.apply(this, arguments);
+        }
+        isFinish = true;
+      }, timeout);
+    }  
+  }
+
+  var count = 0;
+  const func = throttle(function() {
+    count ++
+    console.log(`count = ${count}`);
+  }, 1000);
+
+  var interval = setInterval(() => {
+    if (count >= 5) {
+      clearInterval(interval)
+    }
+    func();
+  }, 50);
+</script>
+</body>
+</html>
