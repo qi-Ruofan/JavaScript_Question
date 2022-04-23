@@ -8,49 +8,17 @@
 </head>
 <body>
 <script>
- function deepClone(obj) {
+function createObject(target, names) {
   // TODO
-  //判断 obj不等于对象或者等于空直接返回
-  if(typeof obj !=='object'||obj==null){
-      return obj
-  }
-  //初始化值
-  var a
-  if(obj instanceof Array){              //判断用instanceof 判断obj如果是对象的话就返回一个对象                                                 
-
-      a=[]
-  }else{
-      a={}
-  }
-  for (var key in obj){                   //然后用for in循环  循环出key值
-      //判断不是原型是数据
-      if(obj.hasOwnProperty(key)){
-          a[key]=deepClone(obj[key])
-
-      }
-  }
-  return a
+  let m = target
+  names.split('.').forEach(item => {
+    m[item] = {}
+    m = m[item]
+  })
+  return target
 }
 
-var obj = {
-  a: 123,
-  b: '123',
-  arr: [
-    {
-      a: 'abc',
-    },
-    false,
-    undefined,
-    null,
-  ],
-  json: {
-    hello: 'world'
-  }
-}
-
-var obj2 = deepClone(obj);
-obj.json.hello = 'xxxx';
-console.log(obj2)
+console.log(createObject({ a: 123}, 'b.c.d.e.f.g')  )
 </script>
 </body>
 </html>
