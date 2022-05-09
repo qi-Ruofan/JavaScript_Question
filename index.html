@@ -8,16 +8,63 @@
 </head>
 <body>
 <script>
-function parse(num) {
-  num = parseFloat(num.toFixed(2));
-  let [integer, decimal] = num.toString().split('.');
-  integer = integer.replace(/\d(?=(\d{3})+$)/g, '$&,');
-  return integer + '.' + (decimal ? decimal : '');
+// function multiply(num1, num2) {
+// 	// TODO
+// 	let len = num1.length
+//   let result = []
+// 	let j = 1
+//   let arr = num1.split('')
+//   let s = 0
+// 	for(let i = 0; i < len; i++) {
+//     // debugger
+//     if(j === num1.length) {
+//       result.push(String(arr[len-j]*num2+Number(s))) 
+//     } else {
+//       result.push(String(arr[len-j]*num2+Number(s)).slice(-1)) 
+//     }
+//     if(String(arr[len-j]*num2).length > 1) {
+//       // debugger
+//       s = String(arr[len-j]*num2+Number(s)).slice(0,-1)
+//     } else {
+//       s = 0
+//     }
+//     j++
+// 	}
+//   return result.reverse().join('')
+// }
+
+// // console.log(multiply('109999999999999999', '2')) 
+// // // // '219999999999999998'
+// // console.log(multiply('12345678901234567890', '2')) 
+// // '24691357802469135780'
+// // console.log(multiply('1234', '123'))
+// console.log(multiply('12345678901234567890', '1234567890')) 
+// // '15241578751714678875019052100'
+// btoa(encodeURIComponent(str))
+function encode(str) {
+  // TODO
+  let newStr = btoa(encodeURIComponent(str));
+  newStr = newStr.replace(/[a-z]/ig, (s) => {
+    return s === s.toUpperCase() ? s.toLowerCase() : s.toUpperCase();
+  });
+  debugger
+  return newStr.substring(0, newStr.length - 2)
 }
 
-console.log(parse(1234567.890)) // 1,234,567.89
-console.log(parse(123456.7890)) // 123,456.79
-console.log(parse(12345.67890)) // 12,345.67
+function decode(str) {
+  // TODO
+  let newStr = str;
+  newStr = newStr.replace(/[a-z]/ig, (s) => {
+    return s === s.toUpperCase() ? s.toLowerCase() : s.toUpperCase();
+  });
+  newStr = newStr + '==';
+  newStr = decodeURIComponent(atob(newStr));
+  return newStr
+}
+
+var s = 'Hello World'
+console.log(encode(s)) // (加密后字符串)
+console.log(decode(encode(s))) // (解密还原字符串)
 </script>
 </body>
 </html>
