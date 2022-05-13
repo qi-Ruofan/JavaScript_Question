@@ -41,30 +41,41 @@
 // console.log(multiply('12345678901234567890', '1234567890')) 
 // // '15241578751714678875019052100'
 // btoa(encodeURIComponent(str))
-function encode(str) {
-  // TODO
-  let newStr = btoa(encodeURIComponent(str));
-  newStr = newStr.replace(/[a-z]/ig, (s) => {
-    return s === s.toUpperCase() ? s.toLowerCase() : s.toUpperCase();
-  });
-  debugger
-  return newStr.substring(0, newStr.length - 2)
-}
+// JS笔试 识别邮箱数据并脱敏
+// function parse(str) {
+//   // TODO
+//   const test = /[A-Za-z0-9]+([_\.][A-Za-z0-9]+)*@([A-Za-z0-9\-]+\.)+[A-Za-z]{2,6}/ig
+//   return str.replace(test, (match) => {
+//     const name = match.split('@')[0] || '*'
+//     const site = match.split('@')[1] || '*'
+//     return `${name[0]}***${name[name.length - 1]}@${match.split('@')[1] || ''}`
+//   })
+// };
 
-function decode(str) {
-  // TODO
-  let newStr = str;
-  newStr = newStr.replace(/[a-z]/ig, (s) => {
-    return s === s.toUpperCase() ? s.toLowerCase() : s.toUpperCase();
-  });
-  newStr = newStr + '==';
-  newStr = decodeURIComponent(atob(newStr));
-  return newStr
-}
+// const str1 = `我叫张三，我的邮箱是 zhangsan@example.com，如对简历感兴趣欢迎邮件联系。`
+// console.log( parse(str1) )
+// // 我叫张三，我的邮箱是 z***n@example.com，如对简历感兴趣欢迎邮件联系。
 
-var s = 'Hello World'
-console.log(encode(s)) // (加密后字符串)
-console.log(decode(encode(s))) // (解密还原字符串)
+// const str2 = `我的邮箱是 1234567890123@abcdefg.com，欢迎邮件联系。`
+// console.log( parse(str2) )
+
+// 只允许英文字母、数字、下划线、英文句号、以及中划线组成
+function find(s) {
+  // TODO
+  let n = 0
+  for(let i = 0; i < s.length -1; i++) {
+    if(s[i] === ')' && s[i-1] ==='(') {
+      n += 2
+    } else {
+      continue
+    }
+  }
+  return n
+};
+
+console.log(find(')()(')); // 2
+console.log(find('()()(')); // 4
+console.log(find('()(()()')); // 4
 </script>
 </body>
 </html>
