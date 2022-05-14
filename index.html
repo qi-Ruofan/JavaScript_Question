@@ -60,22 +60,61 @@
 // console.log( parse(str2) )
 
 // 只允许英文字母、数字、下划线、英文句号、以及中划线组成
-function find(s) {
-  // TODO
-  let n = 0
-  for(let i = 0; i < s.length -1; i++) {
-    if(s[i] === ')' && s[i-1] ==='(') {
-      n += 2
-    } else {
-      continue
+// function find(s) {
+//   // TODO
+//   let n = 0
+//   for(let i = 0; i < s.length -1; i++) {
+//     if(s[i] === ')' && s[i-1] ==='(') {
+//       n += 2
+//     } else {
+//       continue
+//     }
+//   }
+//   return n
+// };
+
+// console.log(find(')()(')); // 2
+// console.log(find('()()(')); // 4
+// console.log(find('()(()()')); // 4
+// function find(arr, target) {
+//   // TODO
+//   let n = 0
+//   for(let i = 0; i < arr.length; i++) {
+//     for(let j = i+1; j < arr.length; j++) {
+//       for(let k = j+1; k < arr.length; k++) {
+//         if(arr[i] + arr[j] + arr[k] === target) {
+//           n++
+//         }
+//       }
+//     }
+//   }
+//   return n
+// };
+
+// console.log(find([1, 1, 2, 2, 3, 3, 4, 4, 5, 5], 8)) // 20
+// console.log(find([1, 1, 2, 2, 2, 2], 5)) // 12
+function find(arr, target) {
+  const len = arr.length;
+  const res = [];
+  arr.sort((a, b) => a - b);
+  const search = (path, target, start) => {
+    if (target === 0) {
+      res.push([...path]);
+      return;
     }
-  }
-  return n
+    for (let i = start; i < len; i++) {
+      if (target < arr[i]) return;
+      path.push(arr[i]);
+      search(path, target - arr[i], i);
+      path.pop();
+    }
+  };
+  search([], target, 0);
+  return res;
 };
 
-console.log(find(')()(')); // 2
-console.log(find('()()(')); // 4
-console.log(find('()(()()')); // 4
+find([3, 4, 5], 11) // [[3, 3, 5], [3, 4, 4]]
+find([4, 5, 6, 7], 12) // [[4, 4, 4], [5, 7], [6, 6]]
 </script>
 </body>
 </html>
